@@ -1,0 +1,252 @@
+:root {
+  --bg: linear-gradient(180deg,#ff9a9e,#fecfef);
+  --envelope: #ff6f91;
+  --flap: #ff4d6d;
+  --paper: #fffdf8;
+  --text-dark: #333;
+}
+
+* {
+  margin:0; padding:0; box-sizing:border-box;
+  font-family: 'Georgia', serif;
+}
+
+body {
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  overflow:hidden;
+  position:relative;
+}
+
+/* ===== Lluvia de corazones ===== */
+.hearts-container {
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:1;
+}
+
+.heart {
+  position:absolute;
+  top:-10%;
+  font-size:24px;
+  color:#ff4d6d;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  from { transform:translateY(-10vh) rotate(0deg); opacity:1; }
+  to { transform:translateY(110vh) rotate(360deg); opacity:0; }
+}
+
+.container {
+  color:#fff;
+  z-index:2;
+}
+
+button {
+  background:#ff4d6d;
+  border:none;
+  color:#fff;
+  padding:12px 22px;
+  border-radius:25px;
+  font-size:16px;
+  cursor:pointer;
+  transition: transform .2s;
+}
+button:hover { transform:scale(1.05); }
+
+/* ===== Modal ===== */
+.modal {
+  position:fixed;
+  top:0; left:0; right:0; bottom:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,.6);
+  visibility:hidden;
+  opacity:0;
+  transition:.5s;
+  z-index:5;
+}
+.modal.open {
+  visibility:visible;
+  opacity:1;
+}
+
+/* ===== Sobre (envelope) ===== */
+.envelope {
+  width:450px; height:320px;
+  position:relative;
+  background:var(--envelope);
+  border-radius:6px;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+/* tapa triangular corregida */
+.flap {
+  position:absolute;
+  top:0; left:0;
+  width:0; height:0;
+  border-left:225px solid transparent;
+  border-right:225px solid transparent;
+  border-top:170px solid var(--flap); /* 🔥 Ahora hacia abajo */
+  transform-origin:top;
+  z-index:2;
+  transition:transform .8s ease;
+  filter: drop-shadow(0 5px 5px rgba(0,0,0,0.25)); /* efecto pliegue */
+  background:linear-gradient(to bottom, #ff4d6d, #ff6f91);
+}
+
+/* sello */
+.seal {
+  position:absolute;
+  top:40%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:42px;
+  cursor:pointer;
+  z-index:3;
+  transition:transform .3s;
+}
+.seal:hover { transform:translate(-50%,-50%) scale(1.2); }
+
+/* carta */
+.letter {
+  position:absolute;
+  left:10px; right:10px;
+  bottom:0;
+  background:transparent;
+  border-radius:10px;
+  max-height:100%;
+  overflow:auto;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(100%);
+  transition: all .8s ease;
+}
+
+.paper {
+  background:var(--paper);
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+  border:3px solid #ffb3c6;
+  background-image: linear-gradient(180deg, #fffdf8, #fffaf3);
+}
+
+.paper h2 {
+  margin-bottom:10px;
+  color:#ff4d6d;
+  font-family: 'Brush Script MT', cursive;
+  font-size:28px;
+}
+.paper p {
+  margin:12px 0;
+  line-height:1.6;
+  font-size:16px;
+}
+.buttons {
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:15px;
+}
+.buttons button {
+  font-size:14px;
+}
+
+/* ===== Estados abiertos ===== */
+.envelope.open .flap {
+  transform:rotateX(180deg);
+}
+.envelope.open .seal {
+  display:none;
+}
+.envelope.open .letter {
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.gif-container {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.love-gif {
+  max-width: 80%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* ===== Modal de video ===== */
+.video-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.4s;
+  z-index: 10;
+}
+
+.video-modal.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.video-content {
+  position: relative;
+  background: #000;
+  border-radius: 12px;
+  padding: 15px;
+  max-width: 80%;
+  max-height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-content video {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: contain; /* se ven los controles */
+}
+
+/* Botón cerrar video */
+.close-video {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: none;
+  background: #ff4d6d;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* 🔥 centra la X */
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.close-video:hover {
+  transform: scale(1.1);
+}

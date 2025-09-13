@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para mi princesa 💌</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Lluvia de corazones -->
+  <div class="hearts-container"></div>
+
+  <div class="container">
+    <h1>Porque tu sonrisa ilumina mis días ✨</h1>
+    <p>Este regalo digital es solo el comienzo de muchos momentos hermosos.</p>
+    <button id="openLetterBtn">Abrir mi carta 💌</button>
+  </div>
+
+  <!-- Modal con la carta -->
+  <div class="modal" id="letterModal">
+    <div class="envelope">
+      <div class="flap"></div>
+      <div class="seal" id="seal">💖</div>
+      <div class="letter">
+        <div class="paper">
+          <h2>Hola mi bebita linda,</h2>
+          <p>
+Hoy el calendario decidió brillar distinto, no es un día cualquiera, es el día en el que hace 18 años el mundo te recibió, y yo agradezco a la vida y al destino porque existes y porque coincidimos.
+Yo quiero que sepas que tú eres mi certeza en medio del caos, la melodía que me acompaña incluso en silencio. Me haces creer que mi vida tiene colores que antes no veía, que los días pueden ser suaves como tu risa y luminosos como tus lindos ojitos que tanto me encantan.
+No sé qué regalo podría estar a la altura de lo que mereces… pero quiero que sepas que mi regalo más honesto es este: seguir eligiéndote cada día, soñando contigo a futuro y construyendo nuestro presente, sé que nuestra relación es muy difícil debido a nuestra distancia, pero quiero que sepas que pronto nos veremos, y cuando eso suceda, hare que sea el día más especial y feliz de nuestras vidas.
+Gracias por ser tú, simplemente gracias. Considero que todo lo que has hecho por mí nunca jamás lo podre superar, gracias por salvarme la vida. Prometo estar contigo por siempre, en las buenas y en las malas, espero que nunca jamás nos volvamos a separar por nada en el mundo y que seamos la pareja más feliz del universo.
+
+Bebita linda, se que esto es toda una bobada, pero quería hacerte esto, ya que para mi esto significa un gran esfuerzo, también tengo otra sorpresita para ti ejejjeje, espero que te guste pq te lo estoy dando con todo mi amor, solo no salgas de tu casona muejeje.
+Sin mucho más que decir, feliz cumpleaños mi amor.
+Que este año te abrace con todo lo bueno que la vida te debe, y que juntos podamos escribir las páginas más bonitas de nuestra historia.
+Te amo con toda mi vida, alma, espíritu, cuerpo y todooo ejjwewe. Espero que este día sea muy especial para ti mi bebita hermosa
+          </p>
+          <p>
+            Con todo mi amor,<br>
+            Tu bebito
+          </p>
+          <div class="gif-container">
+            <img src="bubu-bubu-dudu.gif" alt="Nuestro amor" class="love-gif">
+          </div>
+          <div class="buttons">
+            <button id="playMusicBtn">Esta cancion representa lo que siento por ti 🎶
+              (tienes q darle clic)
+            </button>
+            <button id="closeLetterBtn">Cerrar carta ❌</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nuevo modal para el video -->
+  <div class="video-modal" id="videoModal">
+    <div class="video-content">
+      <button class="close-video" id="closeVideoBtn">✖</button>
+      <video id="loveVideo" controls>
+        <source src="SONGBIRD.mp4" type="video/mp4">
+        Tu navegador no soporta el video.
+      </video>
+    </div>
+  </div>
+
+  <audio id="loveSong" src="SONGBIRD.mp4"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
